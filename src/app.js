@@ -16,7 +16,13 @@ app.use(express.urlencoded({extended:true,limit:"16kb"
 })) // url me space wagera ka code hota hai 
 
 app.use(express.static("public")) //store image,doc in our database
+app.use(cookieParser())
 
-f
+//import routes
+import userRouter from "./routes/user.routes.js"
+
+
+//router declaration
+app.use("/api/v1/users",userRouter)
 
 export default app
