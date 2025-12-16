@@ -25,9 +25,6 @@ const {fullName,email,username,password}=req.body
 console.log("Body:",req.body);
 //console.log("email: ",email);
 
-// if(fullName===""){
-//     throw new ApiError(400,"fulname is required")
-// }
 if(
     [fullName,email,username,password].some((field)=>field?.trim()==="")
 )
@@ -44,10 +41,12 @@ if(exitedUser){
 
 
 const avatarLocalPath=req.files?.avatar[0]?.path;//here the avatar is taken from the multer which is exit or not 
+const coverImageLocalPath=req.files?.coverImage?.[0]?.path;
 
-console.log("Avatar",avatarLocalPath);
-
-const coverImageLocalPath=req.files?.coverImage[0]?.path;
+// let coverImageLocalPath;
+// if(req.files && Array.isArray(req.files.coverImage) && req.files.coverImage.length>0){
+//     coverImageLocalPath=req.files.coverImage[0].path
+// }
 
 
 if(!avatarLocalPath){
