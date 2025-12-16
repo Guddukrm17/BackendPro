@@ -17,17 +17,17 @@ const userSchema = new mongoose.Schema(
             required:true,
             unique:true,
             lowercase:true,
-            trim:true
+            trim:true,
         },
         fullName:{
             type:String,
             required:true,           
             trim:true,
-            index:true
+            index:true,
         },
         avatar:{
             type:String,//cloudinary url
-            required:true
+            required:true,
         },
         coverimage:{
             type:String,//cloudinary url
@@ -45,12 +45,12 @@ const userSchema = new mongoose.Schema(
         refreshToKen:{
             type:String
         }
-}, { timestamps: true });
+}, { timestamps: true })
 
 //pre run just before the operation done 
 userSchema.pre("save",async function(next){
     if(!this.isModified("password")) return next();
-   this.password=bcrypt.hash(this.password,10)
+   this.password=await bcrypt.hash(this.password,10)
    next()//yeh tbhi call jb password change ho only
 
 })
