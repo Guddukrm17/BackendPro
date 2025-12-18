@@ -39,7 +39,7 @@ const videoSchema=new mongoose.Schema(
 },{truestamps:true})
 
 
-videoSchema.plugin(mongooseAggregatePaginate)
+videoSchema.plugin(mongooseAggregatePaginate)//ability to kaha se kaha tk kya dena hai 
 
 
 export const Video=mongoose.model("Video",videoSchema)
